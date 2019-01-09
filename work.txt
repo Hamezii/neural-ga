@@ -1,0 +1,47 @@
+04/11/18
+- Since python has a limited support for private identifiers, decide to code the system
+  and then make attributes private once the system is functional in place.
+- Looked into a method for implementing private attributes in python.
+  First looked at https://stackoverflow.com/questions/1641219/does-python-have-private-variables-in-classes
+    - Says limited support of private attributes
+    - Learned that __ before variable just adds the name of the class before it (i.e. A.__x -> A._A__x)
+  Then looked at https://docs.python.org/2/tutorial/classes.html#private-variables-and-class-local-references
+    - Python's Class module documentation
+    - Here I learned that Python can't actually enforce private identifiers
+    - The documentation says any attribute or function prefixed with _ should be treated
+      as a non-public part of the API and considered an implementation detail.
+    - I decided to use this convention when naming my private variables.
+
+06/11/18
+- Convert docstring wrapper from ''' to """
+  -  Did this because it is convention
+
+07/11/18
+- Installed auto-py-to-exe, a UI wrapper for pyinstaller
+  
+
+
+## Things to talk about with the code:
+- American spelling
+  - words like 'color' and 'randomize'
+  - Since most modules used had american spelling (and in general), 
+    I used it in order to keep consistency.
+- Changed from slice_crossover to uniform_crossover
+  - Even though slice crossover is more nature-like as well as harder to
+    implement, I thought I could get better performance from uniform crossover.
+  - Describe both (maybe with a diagram).
+  - Decided to implement uniform crossover and test with each.
+  - After multiple tests with both, I noticed that with uniform crossover the
+    algorithm seemed to converge to an optimal solution faster.
+  - Reasoning: Maybe because it is hard to edit individual weights in a group
+    with slice crossover, meaning fine-tuning is harder to do. Not sure tho.
+  - Decided to use uniform crossover in the system, but kept slice_crossover
+    so that the client can experiment with both.
+- Activation function
+  - Describe what it is.
+  - Saw online that there is lots of debate about which is best.
+  - Went with leaky ReLU.
+  - I dedicated a variable in NeuralNetLayer to store the activation
+    function that will be used.
+  - This allows the client to choose their activation function if they
+    want to.
